@@ -28,6 +28,14 @@ world-data-insight/
 
 Python: 3.10 or above recommended
 
+It’s recommended to run this project inside a virtual environment (venv):
+
+```bash
+python -m venv .venv
+.\.venv\Scripts\activate   # on Windows
+source .venv/bin/activate  # on macOS/Linux
+```
+
 Install dependencies:
 ```bash
 pip install -r requirements.txt
