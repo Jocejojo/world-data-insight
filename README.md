@@ -7,6 +7,7 @@ It also generates a set of visualisations that highlight relationships between G
 ---
 
 ## 🧩 Project Structure
+```
 world-data-insight/
 ├─ data/
 │  └─ worldData.csv
@@ -19,6 +20,7 @@ world-data-insight/
 ├─ outputs/
 ├─ requirements.txt
 └─ README.md
+```
 
 ---
 
