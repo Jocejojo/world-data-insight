@@ -17,6 +17,10 @@ world-data-insight/
 │  ├─ cleaning.py       # Data cleaning pipeline
 │  ├─ analysis.py       # Functions for analytical questions and summary writing
 │  └─ visualisation.py  # Visualisation functions 
+├─ tests/
+│  ├─ conftest.py
+│  ├─ test_analysis.py
+│  └─ test_cleaning.py 
 ├─ outputs/
 ├─ requirements.txt
 └─ README.md
@@ -41,7 +45,7 @@ Install dependencies:
 pip install -r requirements.txt
 ```
 
-Dependencies include pandas, numpy, matplotlib, tabulate, and seaborn.
+Dependencies include pandas, numpy, matplotlib, tabulate, seaborn and pytest.
 The project was tested in a clean virtual environment (venv) on Windows.
 
 ---
@@ -134,11 +138,36 @@ The process is explicit, reproducible, and documented step by step:
 
 Analytical functions in analysis.py answer the four required questions and write results to `outputs/summary.txt`:
 
-Continent with the largest number of countries: Africa (45)
-Region with largest combined area in sq. km: Americas (42,230,537.74 km²)
-Country with highest life expectancy: Japan (83.59 years)
-Subregion with lowest average GDP per capita: Eastern Africa (1,755.01)
-Subregion with highest average GDP per capita: Western Europe (56,884.58)
+- Continent with the largest number of countries: Africa (45)
+- Region with largest combined area in sq. km: Americas (42,230,537.74 km²)
+- Country with highest life expectancy: Japan (83.59 years)
+- Subregion with lowest average GDP per capita: Eastern Africa (1,755.01)
+- Subregion with highest average GDP per capita: Western Europe (56,884.58)
+
+---
+
+## 🧪 Testing
+
+Unit tests are included under the tests/ directory to ensure the reliability of the cleaning and analysis logic.
+
+The test suite checks:
+
+1. Cleaning pipeline integrity (no duplicates, valid numeric ranges, derived field correctness)
+2. Core analysis results (continent, region, country, and subregion functions)
+3. Consistency of required columns and summary outputs
+
+Run all tests from the project root:
+```bash
+pytest -q
+```
+
+✅ What’s covered
+| Test File                | Purpose                                                                                   |
+| ------------------------ | ----------------------------------------------------------------------------------------- |
+| `tests/test_cleaning.py` | Verifies key invariants after cleaning (valid ranges, deduplication, population density). |
+| `tests/test_analysis.py` | Checks correctness of the four analytical functions.                                      |
+| `tests/conftest.py`      | Provides reusable sample DataFrames and adds the `src/` directory to the test path.       |
+
 
 ---
 
